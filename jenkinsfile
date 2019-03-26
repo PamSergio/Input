@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Image Resize') {
             steps{
-                git 'https://github.com/PamSergio/Input.git' 
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PamSergio/Input.git']]])
                 echo 'Check out code in Git Repository'
                 }
             }
