@@ -3,7 +3,6 @@ pipeline {
     
     stages   {
         stage ('Copy from Container to Host '){
-            agent {docker 'pamsergio/jenkinsapp'}
             steps {
                 echo 'Copy files from recent container to local machine'
                 sh 'node --version'
