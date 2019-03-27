@@ -12,7 +12,9 @@ pipeline {
         stage ('Copy from Container to Host '){
             steps{
                 echo 'Copy files from recent container to local machine'
+                sh '''
                 docker cp jenkinsDC:/var/jenkins_home/workspace/Image-Resize-Convert@script .
+                '''
             }
         }
         }
