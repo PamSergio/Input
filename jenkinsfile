@@ -1,14 +1,6 @@
 pipeline {
     agent any
         
-    stages {
-        stage ('Git Code Checkout') {
-            steps{
-                echo 'Check out code in Git Repository'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PamSergio/Input.git']]])
-                }
-            }
-        
         stage ('Copy from Container to Host '){
             steps{
                 echo 'Copy files from recent container to local machine'
