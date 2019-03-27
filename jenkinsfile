@@ -2,11 +2,18 @@ pipeline {
     agent any
         
     stages {
-        stage ('Image Resize') {
+        stage ('Git Code Checkout') {
             steps{
+                echo 'Check out code in Git Repository'
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PamSergio/Input.git']]])
-                echo 'Pam: Check out code in Git Repository'
                 }
             }
+        
+        stage ('Copy from Container to Host '){
+            steps{
+                echo 'Copy files from recent container to local machine'
+                docker cp jenkinsDC:/var/jenkins_home/workspace/Resize-and-Convert-Images .
+            }
         }
-    }
+        }
+    } 
