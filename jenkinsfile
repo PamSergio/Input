@@ -1,11 +1,5 @@
-def dockerHome = tool 'myDocker'
-
 pipeline {
     agent any
-    
-     environment{
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-     }
     
     stages   {
         stage ('Copy from Container to Host '){
