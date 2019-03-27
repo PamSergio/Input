@@ -3,8 +3,8 @@ pipeline {
     
     stages   {
         stage ('Copy from Container to Host '){
+            agent {docker 'jenkinsDC'}
             steps {
-                agent {docker 'jenkinsDC'}
                 echo 'Copy files from recent container to local machine'
                 sh 'node --version'
             }
