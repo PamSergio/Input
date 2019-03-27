@@ -1,5 +1,5 @@
 pipeline {
-    agent {docker 'jenkinsDC'}
+    agent any
     
     stages   {
         stage ('Copy from Container to Host '){
