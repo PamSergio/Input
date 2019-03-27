@@ -1,14 +1,12 @@
 pipeline {
     agent any
     
+     environment{
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+     }
+    
     stages   {
-        stage('Initialize'){
-            steps {
-                def dockerHome = tool 'myDocker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-         }
-          
         stage ('Copy from Container to Host '){
             agent {docker 'pamsergio/jenkinsapp'}
             steps {
