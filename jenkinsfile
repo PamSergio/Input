@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh'''
                 #!/bin/sh
-                sh 'node --version'
+                node --version
+                '''
             }
         }
     }
