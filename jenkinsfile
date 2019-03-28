@@ -9,7 +9,8 @@ pipeline {
                 docker {
                     // Set both label and image
                     label 'docker'
-                    image: 'jenkins/jenkins:lts'
+                    image 'jenkins/jenkins:lts'
+                    args '--name TryTest'
                 }
             }
             steps {
