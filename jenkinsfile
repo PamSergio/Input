@@ -1,26 +1,11 @@
 pipeline {
-    agent { 
-        label 'docker'
-    }
-    
-    environment {
-        registry = "kammana/my-app:2.0.0"
-    }
+    agent any
     
     stages {
         
         stage ('Build Docker Image') {
-            agent {
-                docker {
-                  label 'docker'  // both label and image
-                  image 'maven:3-alpine'
-                }
-            }
- 
             steps {
-                script {
-                    docker.build registry + ":$BUILD_NUMBER"
-                }
+                sh "docker ps -a"
             }
         }
     }
