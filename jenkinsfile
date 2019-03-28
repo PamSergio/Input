@@ -1,9 +1,8 @@
 pipeline {
-    agent any
-
-    environment {
-        dockerHome = tool 'MyDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+        }
     }
     
     stages {
