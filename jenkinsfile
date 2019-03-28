@@ -1,13 +1,10 @@
 pipeline {
-    agent any
-    
+    agent { docker 'alpine' }
     stages {
-        stage ('Build Docker Image') {
+        stage('Test') {
             steps {
-                script{
-                    sh 'docker build -t kammana/my-app:2.0.0'
-                }
+                sh('printenv')
             }
         }
     }
-} 
+}
