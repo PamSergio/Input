@@ -1,11 +1,12 @@
 pipeline {
     agent any
     
-    stages   {
+    stages {
         stage ('Test)' {
             steps {
                 echo 'Run docker-compose file'
                 sh 'docker-compose up'
             }
         }
+    }
 } 
