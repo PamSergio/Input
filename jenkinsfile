@@ -2,20 +2,17 @@ pipeline {
     agent any
     
     stages   {
-    
         stage ('Test)' {
             steps {
                 echo 'Run docker-compose file'
                 sh 'docker-compose up'
             }
         }
-        
         stage ('Copy from Container to Host '){
             steps {
                 echo 'Copy files from recent container to local machine'
                 sh 'docker ps -a'
             }
         }
-        
     }
 } 
