@@ -1,23 +1,12 @@
 pipeline {
     agent {
-        dockerfile {
-            filename 'Dockerfile'
-        }
+        any
     }
     
     stages {
-        stage ('Test') {
-            agent {
-                docker {
-                    // Set both label and image
-                    label 'docker'
-                    image 'jenkins/jenkins:lts'
-                    args '--name TryTest'
-                }
-            }
+        stage ('Build Docker Image') {
             steps {
-                echo 'Run docker-compose file'
-                sh 'docker ps -a'
+                sh 'docker build -t kammana/my-app:2.0.0'
             }
         }
     }
