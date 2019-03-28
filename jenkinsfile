@@ -1,7 +1,8 @@
 pipeline {
     agent any
+
     environment {
-        def dockerHome = tool 'MyDocker'
+        dockerHome = tool 'MyDocker'
         env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
     
