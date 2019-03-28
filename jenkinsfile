@@ -3,15 +3,11 @@ pipeline {
     
     environment {
         registry = "kammana/my-app:2.0.0"
+        dockerHome = tool 'MyDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
     
     stages {
-        stage('Initialize'){
-            steps {
-                dockerHome = tool 'MyDocker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-        }
         
         stage ('Build Docker Image') {
             steps {
