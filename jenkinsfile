@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-    registry = kammana/my-app:2.0.0
+    registry = "kammana/my-app:2.0.0"
     }
     
     stages {
