@@ -9,6 +9,7 @@ pipeline {
                 docker {
                     // Set both label and image
                     label 'docker'
+                    image: jenkins/jenkins:lts
                 }
             }
             steps {
