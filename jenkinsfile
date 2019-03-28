@@ -2,12 +2,12 @@ pipeline {
     agent any
     
     environment {
-    registry = "kammana/my-app:2.0.0"
+        registry = "kammana/my-app:2.0.0"
     }
     
     stages {
         stage('Initialize'){
-            def dockerHome = tool 'MyDocker'
+            dockerHome = tool 'MyDocker'
             env.PATH = "${dockerHome}/bin:${env.PATH}"
         }
         
