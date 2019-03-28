@@ -1,5 +1,13 @@
-node{
-    stage('Check containers'){
-        sh 'docker ps -a'
+pipeline {
+    agent any
+    
+    stages {
+        stage ('Build Docker Image') {
+            steps {
+                script{
+                    sh 'docker build -t kammana/my-app:2.0.0'
+                }
+            }
+        }
     }
-}
+} 
