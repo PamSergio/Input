@@ -4,7 +4,7 @@ node {
     }
     
     stage ('Prepare environment'){
-	        sh("/usr/local/bin/docker ps -a");  
+	        sh("sudo /usr/local/bin/docker ps -a");  
 	        //sh("npm install");      
 	  }
 }
