@@ -4,9 +4,7 @@ node {
     }
     
     stage ('Prepare environment'){
-	    docker.image('jenkins/jenkins:lts').inside {
-	        print "inside a node server"
-	        sh("echo test");  
+	        sh("echo $PATH");  
 	        //sh("npm install");      
 	  }
     }
