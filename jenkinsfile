@@ -4,6 +4,6 @@ node {
     }
     
     stage('Check containers'){
-        sh 'docker ps -a'
+        step([$class: 'DockerBuilderControl', option: [$class: 'DockerBuilderControlOptionStart', cloudName: '', containerId: 'f8dd6a91eaad']])
     }
 }
