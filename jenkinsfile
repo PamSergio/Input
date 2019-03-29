@@ -4,6 +4,6 @@ node {
     }
     
     stage('Check containers'){
-        step([$class: 'DockerBuilderControl', option: <object of type com.nirima.jenkins.plugins.docker.builder.DockerBuilderControlOptionRun>])
+        step([$class: 'DockerBuilderControl', option: <object of type com.nirima.jenkins.plugins.docker.builder.DockerBuilderControlOptionRun>])    
     }
 }
