@@ -3,7 +3,11 @@ node {
         git 'https://github.com/PamSergio/Input.git'   
     }
     
-    stage('Check containers'){
-        withDockerContainer(args: '-p 1000:8080', image: 'jenkins/jenkins:lts', toolName: 'MyDocker')
+    stage ('Prepare environment'){
+	    docker.image('jenkins/jenkins:lts').inside {
+	        print "inside a node server"
+	        sh("echo test");  
+	        //sh("npm install");      
+	  }
     }
 }
