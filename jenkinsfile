@@ -1,12 +1,5 @@
-pipeline {
-    agent any
-    
-    stages {
-        
-        stage ('Build Docker Image') {
-            steps {
-                sh "docker ps -a"
-            }
-        }
+node {
+    stage('SCM Checkout'){
+        git 'https://github.com/PamSergio/Input.git'   
     }
-} 
+}
