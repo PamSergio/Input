@@ -7,7 +7,9 @@ node {
     		//sh("sudo /usr/local/bin/docker run --name TestCon -v /Users/mariefraulienpamelasergio/Documents/Docker/Images:/images --rm -it konjak/imagemagick-ghostscript /bin/sh");
 		sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
 		sh("sudo /usr/local/bin/docker run --name TryCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm konjak/imagemagick-ghostscript /bin/sh");
-		//sh("cd images/");
+		sh("cd images/");
+		sh("mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 *.png");
+		sh("exit")
 		//sh("sudo /usr/local/bin/docker ps -a"); 
 		//sh("sudo /usr/local/bin/docker ResizedImages_AI");
 		//sh("sudo /usr/local/bin/docker images");
