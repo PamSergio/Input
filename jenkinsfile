@@ -5,11 +5,12 @@ node {
     
     stage ('Prepare environment'){
     		//sh("sudo /usr/local/bin/docker run --name TestCon -v /Users/mariefraulienpamelasergio/Documents/Docker/Images:/images --rm -it konjak/imagemagick-ghostscript /bin/sh");
-		sh("sudo /usr/local/bin/docker run --name ResizeImages konjak/imagemagick-ghostscript")
-		sh("cd images/");
-		sh("sudo /usr/local/bin/docker ps -a"); 
-		sh("sudo /usr/local/bin/docker ResizedImages_AI");
-		sh("sudo /usr/local/bin/docker images");
+		sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
+		sh("sudo /usr/local/bin/docker run --name ResizeImages konjak/imagemagick-ghostscript mogrify -resize 50%/! -path ResizedImages_AI/Reduced_50 *.ai");
+		//sh("cd images/");
+		//sh("sudo /usr/local/bin/docker ps -a"); 
+		//sh("sudo /usr/local/bin/docker ResizedImages_AI");
+		//sh("sudo /usr/local/bin/docker images");
 	        //sh("npm install");      
 	  }
 }
