@@ -1,23 +1,17 @@
-node {
+node 
+{
     stage('SCM Checkout')
     {
-        //Check out source codes from https://github.com/PamSergio/Input.git
-        echo 'Check out code from Github'
+        //Check out and clone source codes from https://github.com/PamSergio/Input.git
+        echo 'Check out code from Github: https://github.com/PamSergio/Input.git'
         git 'https://github.com/PamSergio/Input.git'   
     }
     
-    stage ('Prepare environment')
+    stage ('Resize Image/s')
     {
-    	//sh("sudo /usr/local/bin/docker run --name TestCon -v /Users/mariefraulienpamelasergio/Documents/Docker/Images:/images --rm -it konjak/imagemagick-ghostscript /bin/sh");
-		sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
-		//sh("sudo /usr/local/bin/docker run --name TryCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm konjak/imagemagick-ghostscript /bin/sh");
-		sh("sudo /usr/local/bin/docker run -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -format svg -path /images/ResizedImages_PNG/ /images/*.png");
-		//sh("cd images/");
-		//sh("mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 *.png");
-		//sh("exit")
-		//sh("sudo /usr/local/bin/docker ps -a"); 
-		//sh("sudo /usr/local/bin/docker ResizedImages_AI");
-		//sh("sudo /usr/local/bin/docker images");
-	        //sh("npm install");      
-	  }
+        //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
+        echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
+    	sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
+	sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
+    }
 }
