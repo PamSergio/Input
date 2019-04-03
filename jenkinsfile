@@ -18,6 +18,6 @@ node {
     {
         //Convert the resized images from PNG to SVG
         echo 'Convert the resized images from PNG to SVG'
-        sh("sudo /usr/local/bin/docker run --name ConvertImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -format svg -path /images/ConvertedImages_PNGtoSVG /imagesResizedImages_PNG/Reduced_50/*.png");)    
+        sh("sudo /usr/local/bin/docker run --name ConvertImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -format svg -path /images/ConvertedImages_PNGtoSVG /imagesResizedImages_PNG/Reduced_50/*.png");    
     }
 }   
