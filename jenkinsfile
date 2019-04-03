@@ -1,5 +1,4 @@
-node 
-{
+node {
     stage('SCM Checkout')
     {
         //Check out and clone source codes from https://github.com/PamSergio/Input.git
@@ -7,11 +6,18 @@ node
         git 'https://github.com/PamSergio/Input.git'   
     }
     
-    stage ('Resize Image/s')
+    stage ('Reduce PNG Image/s by 50%')
     {
         //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
         echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
     	sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
-	sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
+		sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
+	}
+
+    stage ('Convert PNG to SVG')
+    {
+        //Convert the resized images from PNG to SVG
+        echo 'Convert the resized images from PNG to SVG'
+        sh("sudo /usr/local/bin/docker run --name ConvertImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -format svg -path /images/ConvertedImages_PNGtoSVG /imagesResizedImages_PNG/Reduced_50/*.png");)    
     }
-}
+}   
