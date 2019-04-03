@@ -1,11 +1,10 @@
 pipeline{
     agent any
     stages{
-        stage('GIT Checkout'){
+        stage('Sample'){
             steps {
                 //Check out and clone source codes from https://github.com/PamSergio/Input.git
-                echo 'Check out code from Github: https://github.com/PamSergio/Input.git'
-                git 'https://github.com/PamSergio/Input.git'  
+                echo 'Sample'
             }
         }
     }
