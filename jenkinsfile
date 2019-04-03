@@ -9,8 +9,9 @@ pipeline{
                 sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG");
                 sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG/Reduced_50");
                 echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
-                sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
-	        }
+                sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images /images/*.png");
+                //sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
+	        }   
         }
     }
 }
