@@ -1,10 +1,15 @@
 pipeline{
     agent any
     stages{
-        stage('Sample'){
+        stage('Reduce PNG Image/s by 50%'){
             steps {
-                //Check out and clone source codes from https://github.com/PamSergio/Input.git
-                echo 'Sample'
+                 //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
+                echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
+    	        sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
+                sh("mkdir ResizedImages_PNG");
+                sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG");
+                sh("mkdir Reduced_50");
+	            sh("/usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
             }
         }
     }
