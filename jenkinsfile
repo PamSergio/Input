@@ -1,10 +1,14 @@
 node {
-    stage('SCM Checkout'){
+    stage('SCM Checkout')
+    {
+        //Check out source codes from https://github.com/PamSergio/Input.git
+        sh("Check out code from Github")
         git 'https://github.com/PamSergio/Input.git'   
     }
     
-    stage ('Prepare environment'){
-    		//sh("sudo /usr/local/bin/docker run --name TestCon -v /Users/mariefraulienpamelasergio/Documents/Docker/Images:/images --rm -it konjak/imagemagick-ghostscript /bin/sh");
+    stage ('Prepare environment')
+    {
+    	//sh("sudo /usr/local/bin/docker run --name TestCon -v /Users/mariefraulienpamelasergio/Documents/Docker/Images:/images --rm -it konjak/imagemagick-ghostscript /bin/sh");
 		sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
 		//sh("sudo /usr/local/bin/docker run --name TryCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm konjak/imagemagick-ghostscript /bin/sh");
 		sh("sudo /usr/local/bin/docker run -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -format svg -path /images/ResizedImages_PNG/ /images/*.png");
