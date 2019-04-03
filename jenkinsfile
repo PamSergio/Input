@@ -3,16 +3,17 @@ pipeline{
     stages{
         stage('Reduce PNG Image/s by 50%'){
             steps {
-                 //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
-                echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
-    	        sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
-                sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG");
-                sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG/Reduced_50");
-	            }
-
-            steps {
-                sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
-            }
+                Environment Preparation {
+                    //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
+                    echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
+    	            sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
+                    sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG");
+                    sh("mkdir /Users/Shared/Jenkins/Home/workspace/SamplePipeline/ResizedImages_PNG/Reduced_50");
+                } 
+                Resize {
+                     sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
+                }
+	        }
         }
     }
 }
