@@ -11,8 +11,8 @@ node {
         //Resizes Images from /Users/Shared/Jenkins/Home/workspace/SamplePipeline
         echo 'Resize Image/s from /Users/Shared/Jenkins/Home/workspace/SamplePipeline'
     	sh("cd /Users/Shared/Jenkins/Home/workspace/SamplePipeline");
-	//sh("sudo /usr/local/bin/docker ps -a");
-	sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize '50%/!' -path /images/ResizedImages_PNG/Reduced_50 '/images/*.png");
+	sh("sudo /usr/local/bin/docker ps -a");
+	sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
 	//sh("sudo /usr/local/bin/docker run --name ResizeImageCon -v /Users/Shared/Jenkins/Home/workspace/SamplePipeline:/images --rm v4tech/imagemagick mogrify -resize 50%/! -path /images/ResizedImages_PNG/Reduced_50 /images/*.png");
     }
 
