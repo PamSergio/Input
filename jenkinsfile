@@ -2,7 +2,7 @@ node {
     stage('SCM Checkout')
     {
         //Check out source codes from https://github.com/PamSergio/Input.git
-        sh("Check out code from Github")
+        echo 'Check out code from Github'
         git 'https://github.com/PamSergio/Input.git'   
     }
     
